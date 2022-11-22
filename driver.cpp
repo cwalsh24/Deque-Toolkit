@@ -7,7 +7,7 @@ int main()
 {
   deque d;
 
-  cout << d.getSize() << endl;
+  cout << d.empty() << " " << d.getSize() << endl;
 
   return 0;
 }

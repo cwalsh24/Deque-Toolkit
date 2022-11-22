@@ -3,6 +3,7 @@
 
 deque::deque(){
   size = 0;
+  isEmpty = true; 
   mapSize = 50; //width
   int** arr = new int *[mapSize];
   for(int i = 0; i < mapSize; i++){
@@ -16,6 +17,10 @@ deque::~deque(){
 
 int deque::getSize(){
   return size;
+}
+
+bool deque::empty(){
+  return isEmpty;
 }
 
 /**void deque::push_front(int number, int**& arr){
