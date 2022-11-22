@@ -13,19 +13,24 @@
 class deque{
  private:
   
-  //T** blockmap currently dont know what this is
+  int** blockmap; //currently dont know what this is
+  int size;
+  int mapSize;
+  const static int blocksize = 50;
+  //int first_block;
+  //int first_element; 
 
  public:
   deque();
   ~deque();
-  void push_front(); //what does this take as a parameter? 
-  void pop_back();
-  void push_front();
-  void pop_back();
+  //  void push_front(); //what does this take as a parameter? 
+  //void pop_back();
+  //void push_front();
+  //void pop_back();
   //front(); //return a copy of the item at the location
   //back(); //need to know the return type
-  bool empty();
-  int size();
+  //bool empty();
+  int getSize();
   //operator[] 
 
 };
