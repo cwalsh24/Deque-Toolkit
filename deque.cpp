@@ -2,13 +2,18 @@
 #include <iostream>
 
 deque::deque(){
+  //initializes the size at zero
   size = 0;
-  isEmpty = true; 
-  mapSize = 50; //width
-  int** arr = new int *[mapSize];
-  for(int i = 0; i < mapSize; i++){
-    arr[i] = new int[blocksize];
-  }
+  //sets isEmpty to be true by default
+  isEmpty = true;
+  //sets the size of the rows in the array
+  mapSize = 10;
+  //first_element not sure what these are for yet
+  //first_block
+  blocksize = 512; //in class it said 4096 so we might want to use that, 1024, 512 etc. 
+  
+  //initializes the 2D array 
+  blockmap = new int *[mapSize];
 }
 
 deque::~deque(){
@@ -34,3 +39,12 @@ bool deque::empty(){
 
 }
 **/
+
+int& deque::operator[](int i){
+  //The row and column indices are calculated and the correct
+  //value in the 2D array is returned.
+  int row = first_block + (first_element + i) / blocksize;
+  int column = (first_element + i) % blocksize;
+
+  return blockmap[row][column];
+}

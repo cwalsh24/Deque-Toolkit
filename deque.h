@@ -13,13 +13,13 @@
 class deque{
  private:
   
-  int** blockmap = nullptr; 
+  int** blockmap; 
   int size;
   bool isEmpty;
   int mapSize;
-  const static int blocksize = 50;
-  //int first_block;
-  //int first_element; 
+  int blocksize;
+  int first_block;
+  int first_element; 
 
  public:
   deque();
@@ -32,7 +32,7 @@ class deque{
   //back(); //need to know the return type
   bool empty();
   int getSize();
-  //operator[] 
+  int& operator[](int i);
 
 };
 
