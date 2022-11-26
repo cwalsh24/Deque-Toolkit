@@ -40,7 +40,15 @@ bool deque::empty(){
 }
 **/
 
-int& deque::operator[](int i){
+int deque::front(){
+  return operator[](0);
+}
+
+int deque::back(){ 
+  return operator[](size - 1);
+}
+
+int& deque::operator[](int i){ 
   //The row and column indices are calculated and the correct
   //value in the 2D array is returned.
   int row = first_block + (first_element + i) / blocksize;

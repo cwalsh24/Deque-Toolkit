@@ -28,8 +28,8 @@ class deque{
   //void pop_back();
   //void push_front();
   //void pop_back();
-  //front(); //return a copy of the item at the location
-  //back(); //need to know the return type
+  int front();
+  int back(); 
   bool empty();
   int getSize();
   int& operator[](int i);
