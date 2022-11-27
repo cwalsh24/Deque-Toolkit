@@ -15,7 +15,6 @@ class deque{
   
   int** blockmap; 
   int size;
-  bool isEmpty;
   int mapSize;
   int blocksize;
   int first_block;

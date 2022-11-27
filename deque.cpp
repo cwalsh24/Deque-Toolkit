@@ -4,16 +4,17 @@
 deque::deque(){
   //initializes the size at zero
   size = 0;
-  //sets isEmpty to be true by default
-  isEmpty = true;
   //sets the size of the rows in the array
   mapSize = 10;
-  //first_element not sure what these are for yet
-  //first_block
-  blocksize = 512; //in class it said 4096 so we might want to use that, 1024, 512 etc. 
+  //sets the values for the first block and first element in the deque
+  first_element = 50; 
+  first_block = 5;
+  //sets the size of the blocks
+  blocksize = 512; 
   
   //initializes the 2D array 
   blockmap = new int *[mapSize];
+  blockmap[first_block] = new int[blocksize];
 }
 
 deque::~deque(){
@@ -25,7 +26,11 @@ int deque::getSize(){
 }
 
 bool deque::empty(){
-  return isEmpty;
+  bool isEmpty = false;
+  if(size == 0){
+    isEmpty = true;
+  }
+  return isEmpty; 
 }
 
 /**void deque::push_front(int number, int**& arr){
