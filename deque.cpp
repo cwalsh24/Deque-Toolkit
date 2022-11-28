@@ -19,11 +19,11 @@ deque::deque(){
   first_element = 50; 
   first_block = 5;
   //sets the size of the blocks
-  blocksize = 512; 
+  blockSize = 512; 
   
   //initializes the 2D array using the previous variables 
   blockmap = new int *[mapSize];
-  blockmap[first_block] = new int[blocksize];
+  blockmap[first_block] = new int[blockSize];
 }
 
 deque::~deque(){
@@ -73,8 +73,8 @@ int deque::back(){
 int& deque::operator[](int i){ 
   //The row and column indices are calculated and the correct
   //value in the 2D array is returned. This is based on in class example. 
-  int row = first_block + (first_element + i) / blocksize;
-  int column = (first_element + i) % blocksize;
+  int row = first_block + (first_element + i) / blockSize;
+  int column = (first_element + i) % blockSize;
 
   //the element in the 2D array is returned to the user. 
   return blockmap[row][column];

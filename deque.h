@@ -25,7 +25,7 @@ class deque{
   int** blockmap; 
   int size;
   int mapSize;
-  int blocksize;
+  int blockSize;
   int first_block;
   int first_element; 
 

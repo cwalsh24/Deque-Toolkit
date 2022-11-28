@@ -15,8 +15,14 @@ using namespace std;
 int main()
 {
   deque d;
-
-  cout << d.empty() << " " << d.getSize() << endl;
+  cout << "This is a test for deque functionality: " << endl << endl;
+  //if the empty() method evaluates to false, we know that the deque is starting empty
+  if (d.empty() == true){
+    cout << "The deque is currently empty. " << endl;
+  }
+  //prints the size using the size() method to show the user that the deque is empty
+  cout << "The size of the deque is currently " << d.getSize() << "." << endl << endl;
+  cout << "Reading in integers..." << endl << endl;
 
   return 0;
 }
