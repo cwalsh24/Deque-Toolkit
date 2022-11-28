@@ -40,7 +40,7 @@ class deque{
  */
   deque();
   ~deque();
-  //void push_front(); 
+  void push_front(int number); 
   //void pop_back();
   //void push_front();
   //void pop_back();

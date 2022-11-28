@@ -21,7 +21,8 @@ deque::deque(){
   //sets the size of the blocks
   blockSize = 512; 
   
-  //initializes the 2D array using the previous variables 
+  //initializes the 2D array using the previous variables and sets the deque
+  //starting position. 
   blockmap = new int *[mapSize];
   blockmap[first_block] = new int[blockSize];
 }
@@ -46,17 +47,36 @@ bool deque::empty(){
   return isEmpty; 
 }
 
-/**void deque::push_front(int number, int**& arr){
-  if(size == 0){ //inserts in the middle, middle is the starting point for the deque
-    arr[25][25] = number; //row, column
+void deque::push_front(int number){
+  //row = first_block; //possibly delete later
+  //column = first_element;
+  //if the column position isn't zero (out of space) then the element can be added.
+  if(0 < first_element){
+    //updates the first element so the new number is the first element.
+    first_element--;
+    //sets the index before the first_element to equal the number. 
+    blockmap[first_block][first_element] = number;
+    //size is increased to keep track if all elements in the deque. 
     size++;
   }
   else{
-    //arr[+size?][]
-  }
-
+    //if there is a previous row exists, the entry is placed there
+    if(0 < first_block - 1){
+      //this line sets the first block in the row, the minus one is to account for zero
+      //Without the minus 1, the program crashes. 
+      blockmap[first_block - 1] = new int[blockSize];
+      //makes the first_element the last entry in the in the new block. 
+      first_element = blockSize - 1;
+      //sets the first block to be the one we are currently on. 
+      first_block--;
+      //sets the index in the block to equal the number we are inserting.
+      blockmap[first_block][first_element] = number;
+      //increases the size to keep track of the elements in the deque. 
+      size++;
+    }
+    //TODO NEED TO ADD CASE FOR IF THE PREVIOUS ROW DOESN'T EXIST 
+  }   
 }
-**/
 
 int deque::front(){
   //This calls the operator method to return the element at the front
