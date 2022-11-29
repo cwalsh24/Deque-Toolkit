@@ -29,7 +29,9 @@ deque::deque(){
 }
 
 deque::~deque(){
-
+  //Isaac - since a deque is a 2D dynamic array, the destructor should start to free memory at
+  //the deepest level, starting with each int* array within the higher int** array and working
+  //its way up the chain
 }
 
 int deque::getSize(){
@@ -57,7 +59,7 @@ void deque::push_front(int number){
     last_element++; 
     //sets the index before the first_element to equal the number. 
     blockmap[first_block][first_element] = number;
-    //size is increased to keep track if all elements in the deque. 
+    //size is increased to keep track of all elements in the deque. 
     size++;
   }
   else{

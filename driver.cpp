@@ -58,7 +58,7 @@ int main()
   for(int i = 0; i < 997; i++){
     d.pop_front();
   }
-
+  
   //prints the elements contained in the deque
   for(int i = 0; i < 3; i++){
     cout << d[i] << " ";
