@@ -13,9 +13,9 @@
 deque::deque(){
   //initializes the size at zero
   size = 0;
-  //sets the size of the rows in the array
+  //sets the number of array rows. 
   mapSize = 10;
-  //sets the values for the first block and first element in the deque
+  //sets the values for the starting block and first element position in the deque
   first_element = 50; 
   first_block = 5;
   //sets the size of the blocks
