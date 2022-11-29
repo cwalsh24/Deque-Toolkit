@@ -65,16 +65,15 @@ void deque::push_front(int number){
   else{
     //if there is a previous block (row) exists, the entry is placed there
     if(0 < first_block - 1){
-      //this line sets the first block in the row, the minus one is to account for zero
-      //Without the minus 1, the program crashes. 
-      blockmap[first_block - 1] = new int[blockSize];
+      //sets the first block to be the one we are currently on.
+      first_block--; 
+      //this line sets the first block in the row, the minus one is to account for zero 
+      blockmap[first_block] = new int[blockSize];
       //makes the first_element the last entry in the in the new block. 
       first_element = blockSize - 1;
       //sets the last element to be equal to the first in the new block since it
       //is now the rightmost entry in the new row. 
-      last_element = first_element; 
-      //sets the first block to be the one we are currently on. 
-      first_block--;
+      last_element = first_element;  
       //sets the index in the block to equal the number we are inserting.
       blockmap[first_block][first_element] = number;
       //increases the size to keep track of the elements in the deque. 
