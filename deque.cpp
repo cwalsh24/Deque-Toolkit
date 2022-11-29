@@ -50,7 +50,7 @@ bool deque::empty(){
   return isEmpty; 
 }
 
-void deque::push_front(int number){
+void deque::push_front(int number){ //This probably needs a size == 0 check to set the first element in the deque
   //if the element (column) position isn't zero (out of space) then the element can be added.
   if(0 < first_element){
     //updates the first element so the new number is the first element.
