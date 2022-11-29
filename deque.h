@@ -27,7 +27,8 @@ class deque{
   int mapSize;
   int blockSize;
   int first_block;
-  int first_element; 
+  int first_element;
+  int last_element;
 
  public:
 
@@ -41,9 +42,9 @@ class deque{
   deque();
   ~deque();
   void push_front(int number); 
-  //void pop_back();
+  void pop_front();
   //void push_front();
-  //void pop_back();
+  void pop_back();
 
 /**
  * This method uses the operator method to print the first element in the deque.

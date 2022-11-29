@@ -20,11 +20,12 @@ deque::deque(){
   first_block = 5;
   //sets the size of the blocks
   blockSize = 512; 
-  
   //initializes the 2D array using the previous variables and sets the deque
   //starting position. 
   blockmap = new int *[mapSize];
   blockmap[first_block] = new int[blockSize];
+  //sets last_element to begin as being equal to first_element
+  last_element = first_element;
 }
 
 deque::~deque(){
@@ -48,25 +49,28 @@ bool deque::empty(){
 }
 
 void deque::push_front(int number){
-  //row = first_block; //possibly delete later
-  //column = first_element;
-  //if the column position isn't zero (out of space) then the element can be added.
+  //if the element (column) position isn't zero (out of space) then the element can be added.
   if(0 < first_element){
     //updates the first element so the new number is the first element.
     first_element--;
+    //increases the last element value so the end of the deque can be kept track of
+    last_element++; 
     //sets the index before the first_element to equal the number. 
     blockmap[first_block][first_element] = number;
     //size is increased to keep track if all elements in the deque. 
     size++;
   }
   else{
-    //if there is a previous row exists, the entry is placed there
+    //if there is a previous block (row) exists, the entry is placed there
     if(0 < first_block - 1){
       //this line sets the first block in the row, the minus one is to account for zero
       //Without the minus 1, the program crashes. 
       blockmap[first_block - 1] = new int[blockSize];
       //makes the first_element the last entry in the in the new block. 
       first_element = blockSize - 1;
+      //sets the last element to be equal to the first in the new block since it
+      //is now the rightmost entry in the new row. 
+      last_element = first_element; 
       //sets the first block to be the one we are currently on. 
       first_block--;
       //sets the index in the block to equal the number we are inserting.
@@ -76,6 +80,20 @@ void deque::push_front(int number){
     }
     //TODO NEED TO ADD CASE FOR IF THE PREVIOUS ROW DOESN'T EXIST 
   }   
+}
+
+void deque::pop_front(){
+  //shifts the first_element value right, ignoring the popped value
+  first_element++;
+  //reduces the size count to account for the popped element
+  size--;
+}
+
+void deque::pop_back(){
+  //shifts the first_element value left, ignoring the popped value
+  last_element--;
+  //reduces the size count to account for the popped element
+  size--;
 }
 
 int deque::front(){

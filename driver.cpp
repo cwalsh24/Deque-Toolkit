@@ -37,7 +37,9 @@ int main()
     cout << d[i] << " ";
   }
   
-  cout << endl;
+  cout << endl << endl;
+
+  cout << "The size of the deque is currently " << d.getSize() << "." << endl << endl;
 
   cout << "Front and back method tests: " << endl << endl;
   cout << "The number at the front of the deque is " << d.front() << "." << endl;
@@ -47,7 +49,23 @@ int main()
   cout << "The number at index zero is " << d[0] << "." << endl;
   cout << "If deque[0] is set to equal 400..." << endl; 
   d[0] = 400;
-  cout << "The number at index zero is " << d[0] << "." << endl; 
+  cout << "The number at index zero is " << d[0] << "." << endl << endl;
+
+  cout << "Test for the pop_front() method:" << endl; 
+  cout << "If 997 elements are popped from the front of the deque..." << endl << endl;
+
+  //pops the first 997 elements
+  for(int i = 0; i < 997; i++){
+    d.pop_front();
+  }
+
+  //prints the elements contained in the deque
+  for(int i = 0; i < 3; i++){
+    cout << d[i] << " ";
+  }
+  cout << endl << endl;
+
+  cout << "The size of the deque is currently " << d.getSize() << "." << endl << endl;
 
   return 0;
 }
