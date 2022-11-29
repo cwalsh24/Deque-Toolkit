@@ -21,7 +21,7 @@ deque::deque(){
   //sets the size of the blocks
   blockSize = 512; 
   //initializes the 2D array using the previous variables and sets the deque
-  //starting position. 
+  //starting position in the middle block. 
   blockmap = new int *[mapSize];
   blockmap[first_block] = new int[blockSize];
   //sets last_element to begin as being equal to first_element
@@ -83,7 +83,32 @@ void deque::push_front(int number){
   }   
 }
 
+/**void deque::push_back(int number){ //not working right
+  //if the first and last element values are the same then the element is inserted
+  //in the index to the right of the first element. 
+  if(first_element == last_element){
+    last_element++;
+    blockmap[first_block][last_element] = number;
+    //size is increased to account for the new element. 
+    size++;
+  }
+  else{
+    //if the last element value is less than the blockSize (meaning that the row block isn't full)
+    //then the new element can be inserted in this position. We need the minus 1 due to the array.
+    if(last_element < blockSize - 1){
+      blockmap[first_block][last_element] = number;
+      last_element++;
+      size++;
+    }
+    //if the block is full... 
+    
+    }**/ 
+
 void deque::pop_front(){
+  //this needs to be here to avoid size going into negatives
+  if(size == 0){
+    return;
+  }
   //shifts the first_element value right, ignoring the popped value
   first_element++;
   //reduces the size count to account for the popped element
@@ -91,30 +116,33 @@ void deque::pop_front(){
 }
 
 void deque::pop_back(){
+  //this needs to be here to avoid size going into negatives
+  if(size == 0){
+    return;
+  }
   //shifts the first_element value left, ignoring the popped value
   last_element--;
   //reduces the size count to account for the popped element
   size--;
 }
 
+int& deque::operator[](int i){ 
+  //The row and column indices are calculated and the correct
+  //value in the 2D array is returned. This is based on in class example. 
+  int row = first_block + ((first_element + i) / blockSize);
+  int column = (first_element + i) % blockSize;
+  //the element in the 2D array is returned to the user. 
+  return blockmap[row][column];
+}
+
 int deque::front(){
   //This calls the operator method to return the element at the front
-  //of the deque. 
+  //of the deque.
   return operator[](0);
 }
 
 int deque::back(){
   //This calls the operator method to return the element at the back
-  //of the deque. Subtracting 1 accounts for starting at index 0. 
+  //of the deque. Subtracting 1 accounts for starting at index 0.
   return operator[](size - 1);
-}
-
-int& deque::operator[](int i){ 
-  //The row and column indices are calculated and the correct
-  //value in the 2D array is returned. This is based on in class example. 
-  int row = first_block + (first_element + i) / blockSize;
-  int column = (first_element + i) % blockSize;
-
-  //the element in the 2D array is returned to the user. 
-  return blockmap[row][column];
 }
