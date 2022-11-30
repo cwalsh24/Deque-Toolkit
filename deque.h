@@ -41,9 +41,39 @@ class deque{
  */
   deque();
   ~deque();
+
+/**
+ * The push_front method pushes a new element onto the front of the deque.
+ *
+ * @param int number This is the element that is being added to the deque.
+ * @pre There must be a deque object declared for the method to be run.
+ * @return void This method returns nothing.
+ * @post The integer has been added to the front of the deque.
+ * 
+ */
   void push_front(int number); 
+
+/**
+ * This method removes the first element from the deque. This is accomplished 
+ * by simply ignoring the element which will be overwritten if an element is pushed into its place.
+ *
+ * @pre There must be a deque object declared. 
+ * @return void This method returns nothing.
+ * @post The integer has been "popped" from the deque.
+ * 
+ */
   void pop_front();
-  //void push_front();
+  //void push_back();
+
+/**
+ * This method removes the last element from the deque. This is accomplished
+ * by simply ignoring the element which will be overwritten if an element is pushed into its place.
+ *
+ * @pre There must be a deque object declared.
+ * @return void This method returns nothing.
+ * @post The integer has been "popped" from the deque.
+ *
+ */
   void pop_back();
 
 /**
