@@ -54,13 +54,17 @@ int main()
   cout << "Test for the pop_front() method:" << endl; 
   cout << "If 997 elements are popped from the front of the deque..." << endl << endl;
 
+  int dequeSize = d.getSize();
+  
   //pops the first 997 elements
-  for(int i = 0; i < 997; i++){
+  for(int i = 0; i < dequeSize - 3; i++){
     d.pop_front();
   }
+
+  dequeSize = d.getSize();
   
   //prints the elements contained in the deque
-  for(int i = 0; i < 3; i++){
+  for(int i = 0; i < dequeSize; i++){
     cout << d[i] << " ";
   }
   cout << endl << endl;
