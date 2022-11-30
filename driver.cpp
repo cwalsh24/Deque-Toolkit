@@ -43,7 +43,7 @@ int main()
 
   cout << "Front and back method tests: " << endl << endl;
   cout << "The number at the front of the deque is " << d.front() << "." << endl;
-  cout << "The number at the back of the deque is " << d.back() << "." << endl;
+  cout << "The number at the back of the deque is " << d.back() << "." << endl << endl;
 
   cout << "Operator test: Changing a value in the deque" << endl << endl; 
   cout << "The number at index zero is " << d[0] << "." << endl;
