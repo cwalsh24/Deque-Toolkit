@@ -13,18 +13,21 @@
 deque::deque(){
   //initializes the size at zero
   size = 0;
-  //sets the number of array rows. 
+  //sets the number of array rows. The deque starts with 10.  
   mapSize = 10;
-  //sets the values for the starting block and first element position in the deque
-  first_element = 50; 
+  //sets the value for the first element position in the deque
+  //the middle of the row seemed to be a good starting point
+  first_element = 50;
+  //sets the starting value for the first_block, which is the middle one in the
+  //blockmap
   first_block = 5;
-  //sets the size of the blocks
-  blockSize = 512; 
+  //sets the amount of entries allowed per block, 100 seemed like a good number. 
+  blockSize = 100; 
   //initializes the 2D array using the previous variables and sets the deque
-  //starting position in the middle block. 
+  //starting position in the middle of the middle block. 
   blockmap = new int *[mapSize];
   blockmap[first_block] = new int[blockSize];
-  //sets last_element to begin as being equal to first_element
+  //sets last_element to begin as being equal to first_element to start
   last_element = first_element;
 }
 
@@ -51,45 +54,76 @@ bool deque::empty(){
 }
 
 void deque::push_front(int number){
-  //if the deque has nothing in it, then the first_element is inserted
-  //at the starting index.
+  //if there is nothing inside of the deque, the number is placed
+  //in the index of the first element (50) in block 5 
   if(size == 0){
     blockmap[first_block][first_element] = number;
+    //the size is increased to account for the new entry
     size++;
   }
+  //if there is already information stored in the deque, the following
+  //if and else statements are executed.
   else{
-    
-  //if the element (column) position isn't zero (out of space) then the element can be added.
-    if(0 < first_element){
-      //updates the first element so the new number is the first element.
+    //If the first_element value is greater than zero (still inside the row)
+    //then the element is added to the row in the previous index to the first_element.
+    if(0 < first_element){ 
+      //the first element is shifted to the left by one to add the new number
       first_element--;
-      //increases the last element value so the end of the deque can be kept track of
-      last_element++; 
-      //sets the index before the first_element to equal the number. 
+      //the number is added in the new index position
       blockmap[first_block][first_element] = number;
-      //size is increased to keep track of all elements in the deque. 
+      //the size is increased to account for the new number.
       size++;
     }
+    //if the block is full then the element must be shifted to the previous row
+    //or a new row needs to be created.
     else{
-      //if there is a previous block (row) exists, the entry is placed there
-      if(0 < first_block - 1){
-	//sets the first block to be the one we are currently on.
-	first_block--; 
-	//this line sets the first block in the row, the minus one is to account for zero 
-	blockmap[first_block] = new int[blockSize];
-	//makes the first_element the last entry in the in the new block. 
+      //if the first block value is greater than zero (it starts at 10) then the previous
+      //row can be used.
+      if(0 < first_block){
+	//first_element's value must be changed to that of the last index of the previous row.
 	first_element = blockSize - 1;
-	//sets the last element to be equal to the first in the new block since it
-	//is now the rightmost entry in the new row. 
-	last_element = first_element;  
-	//sets the index in the block to equal the number we are inserting.
+	//first_block's value is reduced by 1 to move to the previous row. 
+	first_block--;
+	//the previous row now has to be initialized with the proper size.
+	blockmap[first_block] = new int[blockSize];
+	//this line fills the index with the number
 	blockmap[first_block][first_element] = number;
-	//increases the size to keep track of the elements in the deque. 
+	//the size is increased to account for the new number. 
+	size++;
+      }
+      
+      //This condition is executed if there is no previous row that exists.
+      else{
+	//creates a new blockmap that is one row larger so we can store
+	//the number in the deque
+	int **mapReplacement = new int*[mapSize + 1];
+	
+	//first_block is now set to zero to start at the beginning of the blockmap
+	first_block = 0;
+	//the new row that was added is initialized
+	mapReplacement[first_block] = new int[blockSize];
+	//first_element is now changed to be set at the last index of the row
+	first_element = blockSize - 1;
+
+	//This loop copies over all of the values stored in the previous blockmap.
+	//We need the + 1 because the new row was not included there and we need to
+	//skip it. Without it, we get a segmentation fault.  
+	for(int i = 0; i < mapSize; i++){
+	  mapReplacement[i + 1] = blockmap[i];
+	}
+
+	//blockmap now points at the new map 
+	blockmap = mapReplacement;
+	//the number is placed inside of the new row at the proper index
+	blockmap[first_block][first_element] = number;
+	
+	//the mapSize is increased to account for the new row. 
+	mapSize++;
+	//size is increased to account for the new entry
 	size++;
       }
     }
-    //TODO NEED TO ADD CASE FOR IF THE PREVIOUS ROW DOESN'T EXIST 
-  }   
+  }
 }
 
 /**void deque::push_back(int number){ //not working right
