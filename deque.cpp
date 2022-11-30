@@ -32,9 +32,14 @@ deque::deque(){
 }
 
 deque::~deque(){
-  //Isaac - since a deque is a 2D dynamic array, the destructor should start to free memory at
-  //the deepest level, starting with each int* array within the higher int** array and working
-  //its way up the chain
+  //loop deletes every row in the deque with their columns
+  for(int i = 0; i < mapSize; i++){
+    delete [] blockmap[i];
+  }
+  //sets blockmap pointer to null to avoid deleting something bad
+  blockmap = nullptr;
+  //deletes pointer 
+  delete [] blockmap; 
 }
 
 int deque::getSize(){
