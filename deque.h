@@ -28,6 +28,7 @@ class deque{
   int blockSize;
   int first_block;
   int first_element;
+  int last_block;
   int last_element;
 
  public:
@@ -51,7 +52,8 @@ class deque{
  * @post The integer has been added to the front of the deque.
  * 
  */
-  void push_front(int number); 
+  void push_front(int number);
+  void push_back(int number);
 
 /**
  * This method removes the first element from the deque. This is accomplished 
@@ -63,7 +65,6 @@ class deque{
  * 
  */
   void pop_front();
-  //void push_back();
 
 /**
  * This method removes the last element from the deque. This is accomplished
