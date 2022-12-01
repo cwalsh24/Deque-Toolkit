@@ -52,7 +52,8 @@ int main()
   cout << "The number at index zero is " << d[0] << "." << endl << endl;
 
   cout << "Test for the pop_front() method:" << endl; 
-  cout << "If 997 elements are popped from the front of the deque..." << endl << endl;
+  cout << "If 997 elements are popped from the front of the deque and the first 5 elements are printed..."
+       << endl << endl;
 
   int dequeSize = d.getSize();
   
@@ -61,15 +62,28 @@ int main()
     d.pop_front();
   }
 
-  dequeSize = d.getSize();
+  //dequeSize = d.getSize();
   
   //prints the elements contained in the deque
-  for(int i = 0; i < dequeSize; i++){
+  for(int i = 0; i < 5; i++){
     cout << d[i] << " ";
   }
   cout << endl << endl;
 
-  cout << "The size of the deque is currently " << d.getSize() << "." << endl << endl;
+  cout << "The size of the deque is currently " << d.getSize() <<
+    " and we can see that that 2 is now at the front of the deque." << endl << endl;
+  cout << "Behind 2 1 0 you can see zeros which are just empty indexes" << endl;
+  /**
+  //pushes 10 more integers into the deque
+  for(int i = 0; i < 10; i++){
+    d.push_front(2 * 2);
+  }
 
+  for(int i = 0; i < 13; i++){
+    cout << d[i] << " ";
+  }
+  cout << endl;
+  cout << "From this we can see that the new integers have filled the deque" << endl; 
+  **/ 
   return 0;
 }
