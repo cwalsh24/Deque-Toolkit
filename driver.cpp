@@ -111,7 +111,7 @@ int main()
   cout << "The size is now " << d.getSize() << "." << endl << endl;
 
   //these are to show both sides working at the same time
-  cout << "push_front and back test with 1000 integers: " << endl << endl; //not working right
+  cout << "push_front and back test with 50 integers for both sides: " << endl << endl;
   cout << "Reading in integers..." << endl;
   for(int i = 0; i < 50; i++){
     d.push_front(i);
@@ -125,6 +125,43 @@ int main()
     cout << d[i] << " ";
   }
   cout << endl << endl;
+
+  cout << "The number at the front of the deque is " << d.front() << "." << endl;
+  cout << "The number at the back of the deque is " << d.back() << "." << endl << endl;
+
+  cout << "As we can see this works fine. Popping..." << endl << endl;
+  
+  cout << "Done. Printing deque..." << endl << endl;
+  for(int i = 0; i < 50; i++){
+    d.pop_front();
+    d.pop_back();
+  }
+
+  for(int i = 0; i < d.getSize(); i++){
+    cout << d[i] << " ";
+  }
+
+  cout << endl << endl;
+
+  cout << "push_front and back test with 200 integers on both sides: " << endl << endl;
+  cout << "Doing this causes an error, if this is commented out everything else works fine: " << endl << endl;
+  for(int i = 0; i < 200; i++){
+    d.push_front(i); 
+  }
+
+  for(int i = 0; i < 193; i++){
+    d.push_back(i); 
+  }
+
+  cout << "Done. Printing deque..." << endl << endl;
+  for(int i = 0; i < 400; i++){
+    cout << d[i] << " ";
+  }
+
+  cout << endl << endl;
+
+  cout << "The number at the front of the deque is " << d.front() << "." << endl;
+  cout << "The number at the back of the deque is " << d.back() << "." << endl << endl; 
   
   return 0;
 }
