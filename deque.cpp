@@ -86,7 +86,7 @@ void deque::push_front(int number){
   }
 
   // If beginning of first row is reached, then resize
-  mapSize++; //*= 2;
+  /** mapSize++; /= 2;
   int **mapReplacement = new int*[mapSize];
 
   // Initialize the new map
@@ -101,6 +101,29 @@ void deque::push_front(int number){
 
   // blockmap points at the new map
   blockmap = mapReplacement;
+
+  // Store number in the blockmap
+  first_element = blockSize - 1;
+  blockmap[first_block][first_element] = number;
+  size++;**/
+  // If beginning of first row is reached, then resize
+  //mapSize++;
+  int **mapReplacement = new int*[mapSize + 1];
+  first_block = 0;
+  // Initialize the new map
+  for(int i = 0; i < mapSize; i++){
+    mapReplacement[i] = new int[blockSize];
+  }
+
+  // Copy all of the values in blockmap
+  for(int i = 0; i < mapSize; i++){
+    mapReplacement[i + 1] = blockmap[i];
+  }
+
+  // blockmap points at the new map
+  blockmap = mapReplacement;
+
+  mapSize++;
 
   // Store number in the blockmap
   first_element = blockSize - 1;

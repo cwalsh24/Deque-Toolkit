@@ -82,7 +82,7 @@ int main()
     
   cout << "push_front test with 1000 integers: " << endl << endl; //push front is doing the zeros thing, weird numbers
   cout << "Reading in integers..." << endl;
-  for(int i = 0; i < 500; i++){
+  for(int i = 0; i < 1000; i++){
     d.push_front(i);
   }
 
@@ -98,8 +98,8 @@ int main()
   cout << "There are now " << d.getSize()<< " elements in the deque." << endl << endl;
 
   cout << "Test for pop_front method: " << endl << endl;
-  cout << "If 499 numbers are popped..." << endl << endl;
-  for(int i = 0; i < 499; i++){
+  cout << "If 999 numbers are popped..." << endl << endl;
+  for(int i = 0; i < 999; i++){
     d.pop_front();
   }
 
@@ -110,7 +110,21 @@ int main()
   cout << endl << endl;
   cout << "The size is now " << d.getSize() << "." << endl << endl;
 
-  //cout << endl << endl;
+  //these are to show both sides working at the same time
+  cout << "push_front and back test with 1000 integers: " << endl << endl; //not working right
+  cout << "Reading in integers..." << endl;
+  for(int i = 0; i < 50; i++){
+    d.push_front(i);
+    d.push_back(i);
+  }
+
+  cout << d.getSize() << endl << endl;
+
+  cout << "Done. Printing deque..." << endl << endl;
+  for(int i = 0; i < d.getSize(); i++){
+    cout << d[i] << " ";
+  }
+  cout << endl << endl;
   
   return 0;
 }
