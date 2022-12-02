@@ -51,7 +51,7 @@ int main()
   d[0] = 400;
   cout << "The number at index zero is " << d[0] << "." << endl << endl;
   
-  cout << "pop_back 999 elements:" << endl << endl;
+  cout << "Test for pop_back: 999 elements popped:" << endl << endl;
     for(int i = 0; i < 999; i++){
     d.pop_back();
   }
@@ -79,9 +79,11 @@ int main()
     
   cout << "push_front test with 1000 integers: " << endl << endl; //push front is doing the zeros thing, weird numbers
   cout << "Reading in integers..." << endl;
-  for(int i = 0; i < 10; i++){
+  for(int i = 0; i < 500; i++){
     d.push_front(i);
   }
+
+  cout << d.getSize() << endl << endl; 
   
   cout << "Done. Printing deque..." << endl << endl;
   for(int i = 0; i < d.getSize(); i++){
@@ -89,6 +91,10 @@ int main()
   }
   
   cout << endl << endl;
+
+  cout << "There are now " << d.getSize()<< " elements in the deque." << endl << endl;
+
+  cout << "Test for pop_front method: " << endl << endl;
   
   /** for(int i = 0; i < 1000; i++){
     d.pop_front();
