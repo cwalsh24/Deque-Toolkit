@@ -21,13 +21,14 @@
  */
 class deque{
  private:
-  
-  int** blockmap; 
+
+  int** blockmap;
   int size;
   int mapSize;
   int blockSize;
   int first_block;
   int first_element;
+  int last_block;
   int last_element;
 
  public:
@@ -40,6 +41,14 @@ class deque{
  * 
  */
   deque();
+
+/**
+ * This is the destructor for the deque object. This deallocates the memory taken up by the array.
+ *
+ * @pre There must be a deque object declared.
+ * @post The deque object has been deleted and the memory has been deallocated.
+ * 
+ */
   ~deque();
 
 /**
@@ -51,7 +60,18 @@ class deque{
  * @post The integer has been added to the front of the deque.
  * 
  */
-  void push_front(int number); 
+  void push_front(int number);
+
+/**
+ * The push_back method pushes a new element onto the front of the deque.
+ *
+ * @param int number This is the element that is being added to the deque.
+ * @pre There must be a deque object declared for the method to be run.  
+ * @return void This method returns nothing.
+ * @post The integer has been added to the front of the deque.
+ *
+ */
+  void push_back(int number);
 
 /**
  * This method removes the first element from the deque. This is accomplished 
@@ -63,17 +83,6 @@ class deque{
  * 
  */
   void pop_front();
-
-/**
- * This function pushes an element onto the back of the deque
- *
- * @param int number This is the element that is being added to the deque.
- * @pre A deque object must be declared
- * @return void This function returns nothing
- * @post The element has been pushed onto the back of the deque.
- * 
- */
-  void push_back(int number);
 
 /**
  * This method removes the last element from the deque. This is accomplished
@@ -95,7 +104,7 @@ class deque{
  * 
  */
   int front();
-  
+
 /**
  * This method uses the operator method to print the last element in the deque.
  *
@@ -104,7 +113,7 @@ class deque{
  * @post The last integer has been returned. 
  *
  */
-  int back(); 
+  int back();
 
 /**
  * This function checks to see if the deque is empty and returns a boolean true 
