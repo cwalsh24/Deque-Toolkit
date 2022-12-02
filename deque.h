@@ -63,7 +63,17 @@ class deque{
  * 
  */
   void pop_front();
-  //void push_back();
+
+/**
+ * This function pushes an element onto the back of the deque
+ *
+ * @param int number This is the element that is being added to the deque.
+ * @pre A deque object must be declared
+ * @return void This function returns nothing
+ * @post The element has been pushed onto the back of the deque.
+ * 
+ */
+  void push_back(int number);
 
 /**
  * This method removes the last element from the deque. This is accomplished

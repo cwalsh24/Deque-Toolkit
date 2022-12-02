@@ -15,12 +15,14 @@ deque::deque(){
   size = 0;
   //sets the number of array rows. The deque starts with 10.  
   mapSize = 10;
+  //sets the amount of entries allowed per block, 100 seemed like a good number.
+  blockSize = 100;
   //sets the value for the first element position in the deque
   //the middle of the row seemed to be a good starting point
-  first_element = 50;
+  first_element = blockSize / 2;
   //sets the starting value for the first_block, which is the middle one in the
   //blockmap
-  first_block = 5;
+  first_block = mapSize / 2;
   //sets the amount of entries allowed per block, 100 seemed like a good number. 
   blockSize = 100; 
   //initializes the 2D array using the previous variables and sets the deque
@@ -102,26 +104,23 @@ void deque::push_front(int number){
 	//creates a new blockmap that is one row larger so we can store
 	//the number in the deque
 	int **mapReplacement = new int*[mapSize + 1];
-	
 	//first_block is now set to zero to start at the beginning of the blockmap
 	first_block = 0;
 	//the new row that was added is initialized
 	mapReplacement[first_block] = new int[blockSize];
 	//first_element is now changed to be set at the last index of the row
 	first_element = blockSize - 1;
-
+	
 	//This loop copies over all of the values stored in the previous blockmap.
 	//We need the + 1 because the new row was not included there and we need to
 	//skip it. Without it, we get a segmentation fault.  
 	for(int i = 0; i < mapSize; i++){
 	  mapReplacement[i + 1] = blockmap[i];
 	}
-
 	//blockmap now points at the new map 
 	blockmap = mapReplacement;
 	//the number is placed inside of the new row at the proper index
 	blockmap[first_block][first_element] = number;
-	
 	//the mapSize is increased to account for the new row. 
 	mapSize++;
 	//size is increased to account for the new entry
@@ -131,11 +130,10 @@ void deque::push_front(int number){
   }
 }
 
-/**void deque::push_back(int number){ //not working right
+void deque::push_back(int number){ //not working right
   //if the first and last element values are the same then the element is inserted
   //in the index to the right of the first element. 
-  if(first_element == last_element){
-    last_element++;
+  if(size == 0){
     blockmap[first_block][last_element] = number;
     //size is increased to account for the new element. 
     size++;
@@ -144,13 +142,14 @@ void deque::push_front(int number){
     //if the last element value is less than the blockSize (meaning that the row block isn't full)
     //then the new element can be inserted in this position. We need the minus 1 due to the array.
     if(last_element < blockSize - 1){
+      last_element++; 
       blockmap[first_block][last_element] = number;
-      last_element++;
       size++;
     }
     //if the block is full... 
     
-    }**/ 
+  }
+}
 
 void deque::pop_front(){
   //this needs to be here to avoid size going into negatives
@@ -186,11 +185,13 @@ int& deque::operator[](int i){
 int deque::front(){
   //This calls the operator method to return the element at the front
   //of the deque.
-  return operator[](0);
+  int number = operator[](0); 
+  return number;
 }
 
 int deque::back(){
   //This calls the operator method to return the element at the back
   //of the deque. Subtracting 1 accounts for starting at index 0.
-  return operator[](size - 1);
+  int number = operator[](size - 1);
+  return number; 
 }
