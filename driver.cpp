@@ -15,20 +15,6 @@ using namespace std;
 int main()
 {
   deque d;
-  /** //TEST STUFF
-  for(int i = 0; i < 1000; i++){
-  //d.push_back(i);
-  //}
-
-  for(int i = 0; i < 1000; i++){
-    d.push_front(i);
-  }
-
-  cout << "Done. Printing deque..." << endl << endl;
-  for(int i = 0; i < 1000; i++){
-    cout << d[i] << " ";
-    }**/ 
-
   cout << "Test for the empty() and size() methods: " << endl << endl;
   
   //if the empty() method evaluates to false, we know that the deque is starting empty
@@ -76,21 +62,35 @@ int main()
   }
   
   cout << endl << endl;
-  /**
+
+  cout << "Reading in a few more integers..." << endl;
+  for(int i = 0; i < 5; i++){
+    d.push_back(i);
+  }
+
+  cout << "Done. Printing deque..." << endl << endl;
+  for(int i = 0; i < d.getSize(); i++){
+    cout << d[i] << " ";
+  }
+
+  cout << endl << endl;
+
+  cout << "We can see here that 400 is at the front of the deque." << endl << endl; 
+    
   cout << "push_front test with 1000 integers: " << endl << endl; //push front is doing the zeros thing, weird numbers
   cout << "Reading in integers..." << endl;
-  for(int i = 0; i < 1000; i++){
+  for(int i = 0; i < 10; i++){
     d.push_front(i);
   }
   
   cout << "Done. Printing deque..." << endl << endl;
-  for(int i = 0; i < 1000; i++){
+  for(int i = 0; i < d.getSize(); i++){
   cout << d[i] << " ";
   }
   
   cout << endl << endl;
   
-  for(int i = 0; i < 1000; i++){
+  /** for(int i = 0; i < 1000; i++){
     d.pop_front();
     } 
   
