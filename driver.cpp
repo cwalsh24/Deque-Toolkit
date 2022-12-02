@@ -95,6 +95,20 @@ int main()
   cout << "There are now " << d.getSize()<< " elements in the deque." << endl << endl;
 
   cout << "Test for pop_front method: " << endl << endl;
+
+  cout << "If 499 numbers are popped..." << endl << endl;
+  for(int i = 0; i < 499; i++){
+    d.pop_front();
+  }
+
+  cout << "Done. Printing deque..." << endl << endl;
+  for(int i = 0; i < d.getSize(); i++){
+    cout << d[i] << " ";
+  }
+  cout << endl << endl;
+  cout << "The size is now " << d.getSize() << "." << endl << endl;
+
+  //cout << endl << endl;
   
   /** for(int i = 0; i < 1000; i++){
     d.pop_front();
