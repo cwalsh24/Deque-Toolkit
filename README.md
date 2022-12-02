@@ -26,6 +26,7 @@ This program is a deque data structure that stores integers. A deque is a type o
 * Type ./deque to run the executable created by the compilation process.
 * Type "make clean" to remove unwanted files created by the compilation process.
 * When the executable is run, the tests are executed and printed automatically. There is no user interaction.
+* IMPORTANT: The final test case shows off the bug that we encountered. The program exits abnormally because of this test. Everything else works correctly though. This can be verified by commenting out the final test. 
 
 ## Design Decisions
 * Both the front() and back() methods were programmed to use the operator method instead of executing calculations themselves.
