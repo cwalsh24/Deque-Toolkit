@@ -5,7 +5,7 @@ Date: 10/28/2022
 This program is a deque data structure that stores integers. A deque is a type of dynamic sequence container with two ends that can be added to or removed from. Running the driver runs tests on the deque that demonstrate how this data structure works. This implementation of a deque takes integers and can either store them at the front or back of the deque or pop them from either end. Elements inside of the deque can be accessed and manipulated via the [] operator and the elements at the front and back of the deque can be returned to the user at any time by calling their respective accessor methods. Lastly, this implementation of the deque contains an accessor method for whether or not the queue is empty, which returns a bool value, and one of the number of elements in the queue, which returns an integer.
 
 ## Container properties
-* The deque is a sequence containor meaning that its elements are arranged in a linear sequence of indexes. Specific elements can be accessed based on their possition in the sequence.
+* The deque is a sequence container meaning that its elements are arranged in a linear sequence of indexes. Specific elements can be accessed based on their position in the sequence.
 * The deque is backed by a dynamic, 2-dimensional array, which allows for direct access to any element contained in the deque and allows for fast insertion and deletion from the queue.
 
 ## Member functions
@@ -39,7 +39,7 @@ This program is a deque data structure that stores integers. A deque is a type o
 * Currently, the deque stops working properly when large quantities of elements are pushed onto both sides at the same time and then printed. This issue has not 
 yet been fixed. This is either an operator or resizing problem. 
 * The front() and back() methods work correctly as evidenced in the tests.
-* push_front() and push_back() appear to be adding to the deque properly aside from the aformentioned issue.
+* push_front() and push_back() appear to be adding to the deque properly aside from the aforementioned issue.
 * The destructor has been tested and is working properly.
 * The empty() and getSize() methods work properly.
 
@@ -50,4 +50,4 @@ yet been fixed. This is either an operator or resizing problem.
 
 ## How We Shared Work
 * We had to work on the project whenever possible to get it done.
-* Connor began the project and Kyle heavily revised it towards the end. Isacc commented some of the code and brainstormed.
+* The code was written by Connor and Kyle. Isacc commented some of the code and brainstormed.
