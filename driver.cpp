@@ -80,7 +80,7 @@ int main()
 
   cout << "We can see here that 400 is at the front of the deque." << endl << endl; 
     
-  cout << "push_front test with 1000 integers: " << endl << endl; //push front is doing the zeros thing, weird numbers
+  cout << "push_front test with 1000 integers: " << endl << endl; 
   cout << "Reading in integers..." << endl;
   for(int i = 0; i < 1000; i++){
     d.push_front(i);
@@ -92,11 +92,9 @@ int main()
   for(int i = 0; i < d.getSize(); i++){
   cout << d[i] << " ";
   }
-  
   cout << endl << endl;
 
   cout << "There are now " << d.getSize()<< " elements in the deque." << endl << endl;
-
   cout << "Test for pop_front method: " << endl << endl;
   cout << "If 999 numbers are popped..." << endl << endl;
   for(int i = 0; i < 999; i++){
@@ -108,6 +106,8 @@ int main()
     cout << d[i] << " ";
   }
   cout << endl << endl;
+  
+  //shows the size again 
   cout << "The size is now " << d.getSize() << "." << endl << endl;
 
   //these are to show both sides working at the same time
@@ -128,9 +128,9 @@ int main()
 
   cout << "The number at the front of the deque is " << d.front() << "." << endl;
   cout << "The number at the back of the deque is " << d.back() << "." << endl << endl;
-
   cout << "As we can see this works fine. Popping..." << endl << endl;
-  
+
+  //pops both the back and the front at the same time.
   cout << "Done. Printing deque..." << endl << endl;
   for(int i = 0; i < 50; i++){
     d.pop_front();
@@ -142,13 +142,14 @@ int main()
   }
 
   cout << endl << endl;
-
+  
+  //This is the error part, everything before this point runs correctly. 
   cout << "push_front and back test with 200 integers on both sides: " << endl << endl;
   cout << "Doing this causes an error, if this is commented out everything else works fine: " << endl << endl;
   for(int i = 0; i < 200; i++){
     d.push_front(i); 
   }
-
+  //the 193 is to account for the 7 numbers already on the back side of the deque
   for(int i = 0; i < 193; i++){
     d.push_back(i); 
   }
