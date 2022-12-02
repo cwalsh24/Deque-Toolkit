@@ -17,11 +17,18 @@ This program is a deque data structure that stores integers. A deque is a type o
 * The pop_front and pop back methods work like a circular array where the element technically isn't removed from the deque, but it is now able to be overwritten by the next element that is pushed in. The elements gets ignored and then overwritten.
 * The operator method in the deque utilizes the "computing row based on index" example code from the lecture.
 
+## Observations
+* Currently, the deque stops working properly when large quantities of elements are pushed onto both sides at the same time and then printed. This issue has not 
+yet been fixed. This is either an operator or resizing problem. 
+* The front() and back() methods work correctly as evidenced in the tests.
+* push_front() and push_back() appear to be adding to the deque properly aside from the aformentioned issue.
+* The destructor has been tested and is working properly.
+* The empty() and getSize() methods work properly.
+
 ## Challenges
 * This was the hardest coding assignment all semester. 
 * Trying to get the push_front method to work was hard due to weird errors like printing zeros.
-* Everyone has been very busy this week so it was hard to meet and also get the project done in general.
-* Currently, the deque stops working properly when large quantities of elements are pushed onto both sides at the same time and then printed. This issue has not yet been fixed. 
+* Everyone has been very busy this week so it was hard to meet and also get the project done in general. 
 
 ## How We Shared Work
 * We had to work on the project whenever possible to get it done.
