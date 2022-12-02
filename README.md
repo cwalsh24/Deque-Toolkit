@@ -2,7 +2,24 @@
 Group: Code4Days (Isaac Copeland, Connor Walsh, Kyle Byassee)
 Date: 10/28/2022
 
-This program is a deque data structure that stores integers. A deque is a type of dynamic sequence container with two ends that can be added to or removed from. Running the driver runs tests on the deque that demonstrate how this data structure works. 
+This program is a deque data structure that stores integers. A deque is a type of dynamic sequence container with two ends that can be added to or removed from. Running the driver runs tests on the deque that demonstrate how this data structure works. This implementation of a deque takes integers and can either store them at the front or back of the deque or pop them from either end. Elements inside of the deque can be accessed and manipulated via the [] operator and the elements at the front and back of the deque can be returned to the user at any time by calling their respective accessor methods. Lastly, this implementation of the deque contains an accessor method for whether or not the queue is empty, which returns a bool value, and one of the number of elements in the queue, which returns an integer.
+
+## Container properties
+* The deque is a sequence containor meaning that its elements are arranged in a linear sequence of indexes. Specific elements can be accessed based on their possition in the sequence.
+* The deque is backed by a dynamic, 2-dimensional array, which allows for direct access to any element contained in the deque and allows for fast insertion and deletion from the queue.
+
+## Member functions
+* (constructor)	Construct deque container (public member function)
+* (destructor)	Deque destructor (public member function)
+* Capacity: getSize Returns the number of elements in the deque
+* Capacity: empty Tests to see if the deque is empty
+* Element Access: operator[] Direct access to element
+* Element Access: front Returns element at the front of the deque
+* Element Access: back Returns element at the back of the deque
+* Modifiers: push_front Adds element to the front of the deque
+* Modifiers: pop_front Removes element from the front of the deque
+* Modifiers: push_back Adds element to the back fo the deque
+* Modifiers: pop_back Removes element from the back of the deque
 
 ## How to Run
 * Type "make" to compile the program.
